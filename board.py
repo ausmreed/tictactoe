@@ -29,7 +29,7 @@ print_board(blank_board)
 
 # Define a function to modify board (make a move):
 def edit_board(board, number, player):
-    if number == 7:
+    if number == 7 and board[0][0] != ' ':
         board[0][0] = player
     elif number == 8:
         board[0][1] = player
@@ -45,10 +45,11 @@ def edit_board(board, number, player):
         board[2][0] = player
     elif number == 2:
         board[2][1] = player
-    elif number == 1:
+    elif number == 3:
         board[2][2] = player
-    else print("Not a valid number, please enter a number 1-9")
-        edit_board(board, number, player)
+    else:
+        print ("Not a valid number, please enter a number 1-9, Try again")
+
     return board
 
 
@@ -66,7 +67,24 @@ else:
     for i in range(5):
         moveorder.append('O')
         moveorder.append('X')
-print('Player {}, please enter the position 1-9, corresponding to your num pad, that you would like to play')
 
 # Create move (turn) index, allow user to enter number, put X or O in board (with function above)
 # and print out board again.
+turn = 1
+turn_index = turn - 1
+
+for move in moveorder:
+    print("Move {}".format(turn))
+    print("{}, it's your turn!".format(moveorder[turn_index]))
+    print('{}, please enter the position 1-9, corresponding to your num pad, that you would like to play'.format(moveorder[turn_index]))
+    position = int(input())
+    edit_board(board, position, moveorder[turn_index])
+    print_board(board)
+    # Check 3 in a row goes here
+    turn += 1
+    turn_index += 1
+if turn == 10:
+    print("A Tie!")
+    print("Would you like to play again?")
+else:
+    print("Would you like to play again?")
