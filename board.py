@@ -1,5 +1,6 @@
 # This is the main gameplay of the Tic-Tac-Toe game I devloped.
 
+blank_board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
 
 board = [[' ', ' ', ' '], [' ', ' ', ' '], [' ', ' ', ' ']]
 
@@ -66,3 +67,6 @@ else:
         moveorder.append('O')
         moveorder.append('X')
 print('Player {}, please enter the position 1-9, corresponding to your num pad, that you would like to play')
+
+# Create move (turn) index, allow user to enter number, put X or O in board (with function above)
+# and print out board again.
